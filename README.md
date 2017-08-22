@@ -2,7 +2,7 @@
 
 [![Release](https://img.shields.io/github/release/Dirkster99/MRULib.svg)](https://github.com/Dirkster99/MRULib/releases/latest)
 [![NuGet](https://img.shields.io/nuget/dt/Dirkster.MRULib.svg)](http://nuget.org/packages/Dirkster.MRULib)
-<h1><img src="https://github.com/Dirkster99/Docu/blob/master/MRULib/ProjectIcon.png" height="64"/>&nbsp;Overview</h1>
+<h1><img src="https://github.com/Dirkster99/MRULib/blob/master/ProjectIcon.png?raw=true" height="64"/>&nbsp;Overview</h1>
 The MRUib project supplies MVVM/WPF controls that manage a Most Recently Used list of files. 
 
 ## Demo Application
