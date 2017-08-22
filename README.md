@@ -39,3 +39,6 @@ These definitions do not theme all controls used within this library. You should
 - [MUI](https://github.com/firstfloorsoftware/mui)
 
 to also theme standard elements, such as, button and textblock etc.
+
+This library is the third attempt on the subject. See Codeplex to find the last version of this library:
+http://mrulist.codeplex.com/
