@@ -1,5 +1,4 @@
-
-
+[![Build status](https://ci.appveyor.com/api/projects/status/hs63uymamjh9p34u?svg=true)](https://ci.appveyor.com/project/Dirkster99/mrulib)
 [![Release](https://img.shields.io/github/release/Dirkster99/MRULib.svg)](https://github.com/Dirkster99/MRULib/releases/latest)
 [![NuGet](https://img.shields.io/nuget/dt/Dirkster.MRULib.svg)](http://nuget.org/packages/Dirkster.MRULib)
 <h1><img src="https://github.com/Dirkster99/MRULib/blob/master/ProjectIcon.png?raw=true" height="64"/>&nbsp;Overview</h1>
