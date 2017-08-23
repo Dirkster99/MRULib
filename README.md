@@ -41,4 +41,8 @@ These definitions do not theme all controls used within this library. You should
 to also theme standard elements, such as, button and textblock etc.
 
 This library is the third attempt on the subject. See Codeplex to find the last version of this library:
-http://mrulist.codeplex.com/
+http://mrulist.codeplex.com/. See <a href="https://www.codeproject.com/Articles/1202738/MRU-Most-Recently-Used-WPF-control">CodeProject article</a> for more details.
+
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/StartPage.png?raw=true)
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/MU_MenuItems.png?raw=true)
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/Edi_MRU_ContextMenu.png?raw=true)
