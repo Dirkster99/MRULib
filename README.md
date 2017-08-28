@@ -2,16 +2,17 @@
 [![Release](https://img.shields.io/github/release/Dirkster99/MRULib.svg)](https://github.com/Dirkster99/MRULib/releases/latest)
 [![NuGet](https://img.shields.io/nuget/dt/Dirkster.MRULib.svg)](http://nuget.org/packages/Dirkster.MRULib)
 <h1><img src="https://github.com/Dirkster99/MRULib/blob/master/ProjectIcon.png?raw=true" height="64"/>&nbsp;Overview</h1>
-The MRUib project supplies MVVM/WPF controls that manage a Most Recently Used list of files. 
+The MRUib project supplies MVVM/WPF controls that manage a Most Recently Used list of files.
+See <a href="https://www.codeproject.com/Articles/1202738/MRU-Most-Recently-Used-WPF-control">CodeProject article</a> for more details.
 
 ## Details and Demo Applications
 This library Implements a WPF/MVVM Control libray (with backend) that manages a Most Recently Used list of files:
 - with saving/loading settings from to XML
 - List can be grouped by last access (Pinned, Today, Yesterday, Last Week)
-- A recently documents menu entry sorted by last access (without grouping is also supported)
-- Pinned entries can be moved up and don in the list
+- A recently used files menu entry sorted by last access (without grouping is also supported)
+- Pinned entries can be moved up and down in the list
 - List entries can be removed based on their age (e.g. Remove all entries older than 1 week)
-- Support for Light/Black theming is build in
+- Support for Light/Dark theming is build in
 
 There is a demo application and unit test project to demonstrate usage of the control
 and document each feature, such as, the ability to configure a minimum and maximum value
@@ -41,4 +42,8 @@ These definitions do not theme all controls used within this library. You should
 to also theme standard elements, such as, button and textblock etc.
 
 This library is the third attempt on the subject. See Codeplex to find the last version of this library:
-http://mrulist.codeplex.com/
+http://mrulist.codeplex.com/.
+
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/StartPage.png?raw=true)
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/MU_MenuItems.png?raw=true)
+![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/Edi_MRU_ContextMenu.png?raw=true)
