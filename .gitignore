@@ -1,5 +1,7 @@
 00_Release/
 01_Nuget/
+source/packages/
+packages/
 debug/
 release/
 build/
