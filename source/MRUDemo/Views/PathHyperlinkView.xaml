@@ -14,7 +14,7 @@
         <Grid.Resources>
             <CollectionViewSource Source="{Binding MRUFileList.Entries}" x:Key="collViewEntries"
                                   IsLiveGroupingRequested="True"
-                                  IsLifeSortingRequested="True">
+                                  IsLiveSortingRequested="True">
                 <CollectionViewSource.SortDescriptions>
                     <!--This will sort groups-->
                     <scm:SortDescription PropertyName="Value.GroupItem.Group" Direction="Ascending" />
