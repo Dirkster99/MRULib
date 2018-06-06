@@ -522,28 +522,10 @@
                     List<IMRUEntryViewModel> values = new List<IMRUEntryViewModel>();
 
                     foreach (var item in Entries.Values)
-                    {
                         values.Add(item);
-                    }
-
-                    Entries.Clear();
-                    _NextIsPinnedValue = 1;
 
                     foreach (var item in values)
-                    {
-                        if (item.IsPinned > 0)
-                        {
-                            UpdateEntry(item);
-                        }
-                    }
-
-                    foreach (var item in values)
-                    {
-                        if (item.IsPinned <= 0)
-                        {
-                            UpdateEntry(item);
-                        }
-                    }
+                        UpdateEntry(item);
                 }
             }
             else
