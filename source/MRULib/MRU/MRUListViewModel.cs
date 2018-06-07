@@ -513,7 +513,21 @@
             val.SetIsPinned(newIsPinnedValue);
 
             if (newIsPinnedValue != 0)      // Increment next IsPinned order entry
+            {
                 _NextIsPinnedValue += 1;   // If this entry is a newly pinned enty
+
+                // Update all entries if this entry is the first entry to be pinned
+                if (_NextIsPinnedValue == 2 && Entries.Count > 0)
+                {
+                    List<IMRUEntryViewModel> values = new List<IMRUEntryViewModel>();
+
+                    foreach (var item in Entries.Values)
+                        values.Add(item);
+
+                    foreach (var item in values)
+                        UpdateEntry(item);
+                }
+            }
             else
             {
                 DecrementPinnedValues(oldIsPinnedValue);
