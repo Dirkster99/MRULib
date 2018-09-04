@@ -133,6 +133,75 @@
         #endregion properties
 
         #region methods
+        /// <summary>
+        /// Determines whether this object equals the other object or not.
+        /// </summary>
+        /// <param name="obj"></param>
+        public override bool Equals(object obj)
+        {
+            var other = obj as MRUListViewModel;
+
+            if (other == null)
+                return false;
+
+            if (this.MaxMruEntryCount != other.MaxMruEntryCount)
+                return false;
+
+            if (this.Entries.Count != other.Entries.Count)
+                return false;
+
+            for (int i = 0; i < Entries.Count; i++)
+            {
+                if (Entries[i].Key != other.Entries[i].Key)
+                    return false;
+
+                IMRUEntryViewModel entry = null;
+                Entries.TryGetValue(Entries[i].Key, out entry);
+
+                IMRUEntryViewModel otherEntry = null;
+                if (other.Entries.TryGetValue(Entries[i].Key, out otherEntry) == false)
+                    return false;
+                else
+                {
+                    if (entry == null)
+                        return false;
+
+                    if (otherEntry.File.Path != entry.File.Path)
+                        return false;
+
+                    if (otherEntry.PathFileName != entry.PathFileName)
+                        return false;
+
+                    if (otherEntry.PathfileNameUri != entry.PathfileNameUri)
+                        return false;
+
+                    if (otherEntry.IsPinned != entry.IsPinned)
+                        return false;
+
+                    if (entry.LastUpdate.Equals(Entries[i].Value.LastUpdate) == false)
+                        return false;
+
+                    if (otherEntry.GroupItem.Equals(entry.GroupItem) == false)
+                        return false;
+
+                    if (otherEntry.DisplayPathFileName != entry.DisplayPathFileName)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Serves as the default hash function.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
+        public override int GetHashCode()
+        {
+            return this.MaxMruEntryCount.GetHashCode()
+                    | this.Entries.GetHashCode();
+        }
+
         #region AddRemoveEntries
         /// <summary>
         /// Sets the pinning entry mode for this filenamepath entry.

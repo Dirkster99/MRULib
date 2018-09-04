@@ -5,6 +5,8 @@
     using System.Threading;
     using System.Collections.Generic;
     using System.Linq;
+    using MRULib;
+    using MRULib.MRU.Interfaces;
 
     [TestClass]
     public class CoreTests
@@ -198,6 +200,22 @@
 
             // The maximum number should be the requested one
             Assert.AreEqual(newMaxCount == testColl.Entries.Count, true);
+        }
+
+        /// <summary>
+        /// Test equality through Equals() method for equal smaple objects
+        /// and in-equality case.
+        /// </summary>
+        [TestMethod]
+        public void TestEqual()
+        {
+            var testColl = GenerateTestData.CreateTestData();
+            var testColl1 = GenerateTestData.CreateTestData();
+
+            Assert.IsTrue(testColl.Equals(testColl1));
+
+            testColl = MRU_Service.Create_List();
+            Assert.IsFalse(testColl.Equals(testColl1));
         }
     }
 }

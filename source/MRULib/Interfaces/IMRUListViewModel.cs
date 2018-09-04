@@ -26,7 +26,7 @@
 
         /// <summary>
         /// Gets a command that will invert the IsPinned property of an
-        /// instance of <seealso cref="MRUEntryViewModel"/>.
+        /// instance of <seealso cref="IMRUEntryViewModel"/>.
         /// 
         /// CommandParameter:
         /// The key for the value/key pair is expected to be supplied as

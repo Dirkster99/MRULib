@@ -99,6 +99,32 @@
         {
             Group = groupType;
         }
+
+        /// <summary>
+        /// Determines whether this object equals the other object or not.
+        /// </summary>
+        /// <param name="obj"></param>
+        public override bool Equals(object obj)
+        {
+            var other = obj as GroupViewModel;
+
+            if (other == null)
+                return false;
+
+            if (this.Group != other.Group)
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Serves as the default hash function.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
+        public override int GetHashCode()
+        {
+            return Group.GetHashCode();
+        }
         #endregion methods
     }
 }
