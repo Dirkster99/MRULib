@@ -44,6 +44,10 @@ to also theme standard elements, such as, button and textblock etc.
 This library is the third attempt on the subject. See Codeplex to find the last version of this library:
 http://mrulist.codeplex.com/.
 
+Sample Applications:
+- [Edi](https://github.com/Dirkster99/Edi) (see screeenshots below)
+- [XmlExplorer](https://github.com/Dirkster99/XmlExplorer)
+
 ![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/StartPage.png?raw=true)
 ![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/MU_MenuItems.png?raw=true)
 ![screenshot](https://github.com/Dirkster99/Docu/blob/master/Edi/Edi_MRU_ContextMenu.png?raw=true)
