@@ -17,6 +17,12 @@ This library Implements a WPF/MVVM Control libray (with backend) that manages a 
 
 ![](https://raw.githubusercontent.com/Dirkster99/Docu/master/MruLib/ShowLeftEllipses.png)![](https://raw.githubusercontent.com/Dirkster99/Docu/master/MruLib/ShowCenterEllipses.png)
 
+See `ShowEllipses` dependency property of the:
+- [PathTrimmingFileHyperlink](https://github.com/Dirkster99/MRULib/blob/master/source/MRULib/Controls/PathTrimmingFileHyperlink.xaml.cs)
+- [PathTrimmingTextBlock](https://github.com/Dirkster99/MRULib/blob/master/source/MRULib/Controls/PathTrimmingTextBlock.cs)
+
+for more details.
+
 There is a demo application and unit test project to demonstrate usage of the control
 and document each feature, such as, the ability to configure a minimum and maximum value
 that can be used to keep the resulting number of list entries within defined bounds.
