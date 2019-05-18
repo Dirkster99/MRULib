@@ -53,13 +53,14 @@
                 The Command and CommandParameter bindings are also relayed via additional DPs on this Control.
             -->
             <Hyperlink Name="PART_Hyperlink"
-                       NavigateUri="{Binding Path=NavigateUri, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}"
-                       Command="{Binding Path=NavigateUriCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}"
-                       CommandParameter="{Binding Path=NavigateUriCommandParameter, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}"
-                       TextDecorations="{Binding Path=TextDecorations, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}"
+                       NavigateUri="{Binding Path=NavigateUri, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                       Command="{Binding Path=NavigateUriCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                       CommandParameter="{Binding Path=NavigateUriCommandParameter, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                       TextDecorations="{Binding Path=TextDecorations, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                       >
                 <ctrl:PathTrimmingTextBlock
-                    Path="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}"
+                    ShowElipses="{Binding ShowEllipses, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                    Path="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                     Foreground="{DynamicResource {x:Static reskeys:ResourceKeys.Hyperlink_Foreground}}"
                     />
               <!-- TextBlock Text="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}" / -->

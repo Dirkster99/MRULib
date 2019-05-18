@@ -14,11 +14,13 @@
     public partial class PathTrimmingFileHyperlink : UserControl
     {
         #region fields
-        private static RoutedCommand mCopyUri;
-        private static RoutedCommand mNavigateToUri;
-        private static RoutedCommand mOpenContainingFolder;
+        private static RoutedCommand _CopyUri;
+        private static RoutedCommand _NavigateToUri;
+        private static RoutedCommand _OpenContainingFolder;
 
         /// <summary>
+        /// Backing store of the <see cref="NavigateUri"/> dependency property.
+        /// 
         /// Relay NavigateUri dependency property to outside of PathTrimmingFileHyperlink Control.
         /// Use this dp if you can offer a Uri compliant string that represents the target destination.
         /// "file:///c:\\" or "https://mysite.com"
@@ -31,23 +33,90 @@
               typeof(PathTrimmingFileHyperlink),
               new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Backing store of the <see cref="Text"/> dependency property.
+        /// </summary>
         private static readonly DependencyProperty TextProperty =
           DependencyProperty.Register("Text",
               typeof(string),
               typeof(PathTrimmingFileHyperlink),
               new PropertyMetadata(string.Empty));
 
-        // Using a DependencyProperty as the backing store for TextDecorations.
+        /// <summary>
+        /// Backing store of the <see cref="TextDecorations"/> dependency property.
+        /// </summary>
         private static readonly DependencyProperty TextDecorationsProperty =
             DependencyProperty.Register("TextDecorations",
                 typeof(TextDecorationCollection),
                 typeof(PathTrimmingFileHyperlink),
                 new PropertyMetadata(null));
 
-
+        /// <summary>
+        /// Backing store of the <see cref="NavigateUriCommand"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty NavigateUriCommandProperty =
+            DependencyProperty.Register("NavigateUriCommand",
+                typeof(ICommand),
+                typeof(PathTrimmingFileHyperlink),
+                new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets or sets a command to associate with the PathTrimmingFileHyperlink.
+        /// Backing store of the <see cref="NavigateUriCommandParameter"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty NavigateUriCommandParameterProperty =
+            DependencyProperty.Register("NavigateUriCommandParameter",
+                typeof(object),
+                typeof(PathTrimmingFileHyperlink),
+                new PropertyMetadata(null));
+
+        /// <summary>
+        /// Backing store of the <see cref="ShowEllipses"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShowEllipsesProperty =
+            DependencyProperty.Register("ShowEllipses", typeof(EllipsisPlacement),
+                typeof(PathTrimmingFileHyperlink), new PropertyMetadata(EllipsisPlacement.Center));
+        #endregion fields
+
+        #region constructors
+        /// <summary>
+        /// Static class constructor.
+        /// </summary>
+        static PathTrimmingFileHyperlink()
+        {
+            PathTrimmingFileHyperlink._CopyUri = new RoutedCommand("CopyUri", typeof(PathTrimmingFileHyperlink));
+
+            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(_CopyUri, CopyHyperlinkUri));
+            CommandManager.RegisterClassInputBinding(typeof(PathTrimmingFileHyperlink), new InputBinding(_CopyUri, new KeyGesture(Key.C, ModifierKeys.Control, "Ctrl-C")));
+
+            PathTrimmingFileHyperlink._NavigateToUri = new RoutedCommand("NavigateToUri", typeof(PathTrimmingFileHyperlink));
+            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(_NavigateToUri, Hyperlink_CommandNavigateTo));
+            ////CommandManager.RegisterClassInputBinding(typeof(FileHyperlink), new InputBinding(mCopyUri, new KeyGesture(Key.C, ModifierKeys.Control, "Ctrl-C")));
+
+            PathTrimmingFileHyperlink._OpenContainingFolder = new RoutedCommand("OpenContainingFolder", typeof(PathTrimmingFileHyperlink));
+            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(_OpenContainingFolder, Hyperlink_OpenContainingFolder));
+        }
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        public PathTrimmingFileHyperlink()
+        {
+            InitializeComponent();
+        }
+        #endregion constructors
+
+        #region properties
+        /// <summary>
+        /// Gets/sets whether the Path string should be shortend and displayed with an elipses or not.
+        /// </summary>
+        public EllipsisPlacement ShowEllipses
+        {
+            get { return (EllipsisPlacement)GetValue(ShowEllipsesProperty); }
+            set { SetValue(ShowEllipsesProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets/sets a command to associate with the PathTrimmingFileHyperlink.
         /// 
         /// A command to associate with the System.Windows.Documents.Hyperlink. The default is null.
         /// </summary>
@@ -61,16 +130,7 @@
         }
 
         /// <summary>
-        /// Using a DependencyProperty as the backing store for NavigateUriCommand.
-        /// </summary>
-        private static readonly DependencyProperty NavigateUriCommandProperty =
-            DependencyProperty.Register("NavigateUriCommand",
-                typeof(ICommand),
-                typeof(PathTrimmingFileHyperlink),
-                new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets command parameters associated with the command specified by the
+        /// Gets/sets command parameters associated with the command specified by the
         /// PathTrimmingFileHyperlink.Command property.
         /// 
         /// An object specifying parameters for the command specified by the System.Windows.Documents.Hyperlink.Command
@@ -86,45 +146,6 @@
         }
 
         /// <summary>
-        /// Using a DependencyProperty as the backing store for NavigateUriCommandParameter.
-        /// </summary>
-        private static readonly DependencyProperty NavigateUriCommandParameterProperty =
-            DependencyProperty.Register("NavigateUriCommandParameter",
-                typeof(object),
-                typeof(PathTrimmingFileHyperlink),
-                new PropertyMetadata(null));
-        #endregion fields
-
-        #region constructors
-        /// <summary>
-        /// Static class constructor.
-        /// </summary>
-        static PathTrimmingFileHyperlink()
-        {
-            PathTrimmingFileHyperlink.mCopyUri = new RoutedCommand("CopyUri", typeof(PathTrimmingFileHyperlink));
-
-            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(mCopyUri, CopyHyperlinkUri));
-            CommandManager.RegisterClassInputBinding(typeof(PathTrimmingFileHyperlink), new InputBinding(mCopyUri, new KeyGesture(Key.C, ModifierKeys.Control, "Ctrl-C")));
-
-            PathTrimmingFileHyperlink.mNavigateToUri = new RoutedCommand("NavigateToUri", typeof(PathTrimmingFileHyperlink));
-            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(mNavigateToUri, Hyperlink_CommandNavigateTo));
-            ////CommandManager.RegisterClassInputBinding(typeof(FileHyperlink), new InputBinding(mCopyUri, new KeyGesture(Key.C, ModifierKeys.Control, "Ctrl-C")));
-
-            PathTrimmingFileHyperlink.mOpenContainingFolder = new RoutedCommand("OpenContainingFolder", typeof(PathTrimmingFileHyperlink));
-            CommandManager.RegisterClassCommandBinding(typeof(PathTrimmingFileHyperlink), new CommandBinding(mOpenContainingFolder, Hyperlink_OpenContainingFolder));
-        }
-
-        /// <summary>
-        /// Class constructor
-        /// </summary>
-        public PathTrimmingFileHyperlink()
-        {
-            InitializeComponent();
-        }
-        #endregion constructors
-
-        #region properties
-        /// <summary>
         /// Gets the CopyUri command of the <seealso cref="PathTrimmingFileHyperlink"/> control.
         /// This command copies the current Uri (path) into the Windows clipboard.
         /// </summary>
@@ -132,7 +153,7 @@
         {
             get
             {
-                return PathTrimmingFileHyperlink.mCopyUri;
+                return PathTrimmingFileHyperlink._CopyUri;
             }
         }
 
@@ -144,7 +165,7 @@
         {
             get
             {
-                return PathTrimmingFileHyperlink.mNavigateToUri;
+                return PathTrimmingFileHyperlink._NavigateToUri;
             }
         }
 
@@ -156,7 +177,7 @@
         {
             get
             {
-                return PathTrimmingFileHyperlink.mOpenContainingFolder;
+                return PathTrimmingFileHyperlink._OpenContainingFolder;
             }
         }
 

@@ -425,7 +425,7 @@
             if (mruFilelist == null)
                 return;
 
-            this._MRUFilelist = mruFilelist;
+            _MRUFilelist = mruFilelist;
             RaisePropertyChanged(() => MRUFileList);
         }
         #endregion methods
