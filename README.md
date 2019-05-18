@@ -15,7 +15,7 @@ This library Implements a WPF/MVVM Control libray (with backend) that manages a 
 - Support for Light/Dark theming is build in
 - Entries in a ListView (or other constrained size view) can be trimmed using Ellipses '...' characters at the Left, Right, or Center of the text string
 
-![](https://raw.githubusercontent.com/Dirkster99/Docu/master/MruLib/ShowLeftEllipses.png)
+![](https://raw.githubusercontent.com/Dirkster99/Docu/master/MruLib/ShowLeftEllipses.png)![](https://raw.githubusercontent.com/Dirkster99/Docu/master/MruLib/ShowCenterEllipses.png)
 
 There is a demo application and unit test project to demonstrate usage of the control
 and document each feature, such as, the ability to configure a minimum and maximum value
