@@ -1,6 +1,5 @@
 namespace MRULib.Controls
 {
-    using MRULib.Themes;
     using System;
     using System.Globalization;
     using System.Windows;
@@ -35,12 +34,9 @@ namespace MRULib.Controls
 
     /*********************
     https://www.codeproject.com/Tips/467054/WPF-PathTrimmingTextBlock
-
     Improved Implementation:
-
     Forum Entry from 2017:
     Thanks for this, it was a good start. I've made some modifications to introduce a the following improvements:
-
     1. No longer necessary to be inside a Grid
     2. Won't throw exception if the path is not in a valid format
     3. Measures text size more accurately (ujb1's suggestion - thanks)
@@ -139,15 +135,22 @@ namespace MRULib.Controls
                                                           EllipsisPlacement placement,
                                                           Control ctrl)
         {
-            Size size = new Size() { Width = constraint.Width, Height = constraint.Height };
+            Size size = new Size();
             string filename = string.Empty;
             string directory = string.Empty;
+
+            if (constraint.Width != double.PositiveInfinity)
+                size.Width = constraint.Width;
+
+            if (constraint.Height != double.PositiveInfinity)
+                size.Height = constraint.Height;
 
             switch (placement)
             {
                 // We don't want no ellipses to be shown for a string shortener
                 case EllipsisPlacement.None:
-                    return new Tuple<string, Size>(inputString, constraint);
+                    size = MeasureString(inputString, ctrl);
+                    return new Tuple<string, Size>(inputString, size);
 
                 // Try to show a nice ellipses somewhere in the middle of the string
                 case EllipsisPlacement.Center:
