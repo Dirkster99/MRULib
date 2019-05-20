@@ -67,13 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\BindingProxy .cs" />
+    <Compile Include="Controls\PathTrimmingTextBlock.cs" />
     <Compile Include="Controls\PathTrimmingFileHyperlink.xaml.cs">
       <DependentUpon>PathTrimmingFileHyperlink.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FileHyperlink.xaml.cs">
       <DependentUpon>FileHyperlink.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PathTrimmingTextBlock.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\IntIsPinnedToVisibilityConverter.cs" />
     <Compile Include="Converters\IntToBoolConverter.cs" />
@@ -155,8 +155,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\PathTrimingTextBlock\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

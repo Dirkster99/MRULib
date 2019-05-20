@@ -10,12 +10,7 @@
              xmlns:ctrl="clr-namespace:MRULib.Controls"
              xmlns:reskeys="clr-namespace:MRULib.Themes"
              >
-<!--
-    !!! NOT Using a Grid here because the PathTrimmingTextBlock looks for a parent Grid
-    !!! to compute its correct size. So, the complete control should be placed inside a Grid
-    !!! to make sure measuring works as expected.
--->
-    <!--UserControl.ContextMenu>
+        <!--UserControl.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Copy Url to Clipboard"
                       Command="{x:Static hyperl:PathTrimmingFileHyperlink.CopyUri}"
@@ -30,10 +25,8 @@
                           CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
             </ContextMenu>
         </UserControl.ContextMenu-->
-        <!--
-        !!! NOT Using a Grid here because the PathTrimmingTextBlock looks for a parent Grid
-        !!! to compute its correct size. So, the complete control should be placed inside a Grid.
-        -->
+
+    <Grid>
         <TextBlock>
             <TextBlock.InputBindings>
                 <KeyBinding Key="C" Modifiers="Ctrl"
@@ -59,11 +52,12 @@
                        TextDecorations="{Binding Path=TextDecorations, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                       >
                 <ctrl:PathTrimmingTextBlock
-                    ShowElipses="{Binding ShowEllipses, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                     Path="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                     Foreground="{DynamicResource {x:Static reskeys:ResourceKeys.Hyperlink_Foreground}}"
-                    />
-              <!-- TextBlock Text="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1}}" / -->
+                    ShowElipses="{Binding ShowEllipses, RelativeSource={RelativeSource FindAncestor, AncestorType=hyperl:PathTrimmingFileHyperlink, AncestorLevel=1},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </ctrl:PathTrimmingTextBlock>
             </Hyperlink>
           </TextBlock>
+    </Grid>
 </UserControl>
