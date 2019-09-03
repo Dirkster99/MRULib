@@ -139,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MRULib\MRULib.csproj">
-      <Project>{59c17825-de5a-42bf-89a6-715b64af89f8}</Project>
+      <Project>{facd3bf7-b5bc-4d92-ace5-ac42ff0422ab}</Project>
       <Name>MRULib</Name>
     </ProjectReference>
   </ItemGroup>

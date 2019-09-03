@@ -1,6 +1,9 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/hs63uymamjh9p34u?svg=true)](https://ci.appveyor.com/project/Dirkster99/mrulib)
 [![Release](https://img.shields.io/github/release/Dirkster99/MRULib.svg)](https://github.com/Dirkster99/MRULib/releases/latest)
 [![NuGet](https://img.shields.io/nuget/dt/Dirkster.MRULib.svg)](http://nuget.org/packages/Dirkster.MRULib)
+
+![Net4](https://badgen.net/badge/Framework/.Net&nbsp;4/blue) ![NetCore3](https://badgen.net/badge/Framework/NetCore&nbsp;3/blue)
+
 <h1><img src="https://github.com/Dirkster99/MRULib/blob/master/ProjectIcon.png?raw=true" height="64"/>&nbsp;Overview</h1>
 The MRUib project supplies MVVM/WPF controls that manage a Most Recently Used list of files.
 See <a href="https://www.codeproject.com/Articles/1202738/MRU-Most-Recently-Used-WPF-control">CodeProject article</a> for more details.
